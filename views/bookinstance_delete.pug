@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 #{title}: #{bookinstance.book} #{bookinstance.status}
+  
+    div(style='margin-left:20px;margin-top:20px')
+
+      dl
+      bookinstance
+        dt
+          a(href=bookinstance.url)
+
+    p Do you really want to delete this Book Instance?
+
+    form(method='POST' action='')
+      div.form-group
+        input#bookinstanceid.form-control(type='hidden',name='bookinstanceid', required='true', value=bookinstance._id )
+      button.btn.btn-primary(type='submit') Delete

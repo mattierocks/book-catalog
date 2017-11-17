@@ -38,12 +38,12 @@ AuthorSchema
         return this.date_of_death ? moment(this.date_of_death).format('MMMM Do, YYYY') : '';
     });
 
-// Virtual for author's books
-// AuthorSchema
-//     .virtual('author_books')
-//     .get(function() {
-//         return 'catalog/author_books/' + this._id;
-//     });
+//Virtual for author 's lifespan
+AuthorSchema
+    .virtual('lifespan')
+    .get(function() {
+        return moment(this.date_of_birth).format('MMMM Do, YYYY') + ' - ' + moment(this.date_of_death).format('MMMM Do, YYYY');
+    });
 
 // Export module
 module.exports = mongoose.model('Author', AuthorSchema);
